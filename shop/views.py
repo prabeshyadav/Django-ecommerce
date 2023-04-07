@@ -17,7 +17,7 @@ def index(request):
 
 
 def about(request):
-   return render(request,'shop/basic.html')
+   return render(request,'shop/about.html')
 
 
 def contact(request):

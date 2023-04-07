@@ -1,3 +1,14 @@
 {% extends 'shop/basic.html' %}
+{% load static %}
 
-{% block title %}this is about title{% endblock  %}
+{% block title %}About title{% endblock title %}
+
+{% block link_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock link_css %}
+
+{% block body %}
+
+{% include 'shop/prabesh_component.html' %}
+
+{% endblock body %}
