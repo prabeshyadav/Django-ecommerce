@@ -35,11 +35,11 @@
           bottom: auto;
           padding-top:222px
           }
-           body .no-padding{
-           padding-left: 0,
-           padding-right: 0;
-           }
- {% endblock %}
+          body .no-padding{
+          padding-left: 0,
+          padding-right: 0;
+          }
+{% endblock %}
 
 {% block body %}
 {% load static %}
@@ -53,7 +53,7 @@
     <ul class="carousel-indicators">
       <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
 
-       {% for i in range %}
+      {% for i in range %}
       <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}" ></li>
       {% endfor %}
     </ul>
@@ -72,6 +72,7 @@
               <h5 class="card-title">{{i.product_name}}</h5>
               <p class="card-text">{{i.desc}}</p>
               <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
+              <a href="/shop/products"> <button id="qv{{i.id}}" class="btn btn-primary cart">Quick view</button></a>
             </div>
           </div>
         </div>
@@ -96,7 +97,7 @@
   </div>
     {% endfor %}
 </div>
- {% endblock %}
+{% endblock %}
 
 {% block JS %}
 <script>

@@ -4,6 +4,8 @@ from django.db import models
 class product(models.Model):
     product_id=models.AutoField;
     product_name=models.CharField(max_length=10);
+    price= models.DecimalField(max_digits=10, decimal_places=2)
+
     category= models.CharField(max_length=50,default='');
     subcaregory= models.CharField(max_length=50,default='');
     desc=models.CharField(max_length=50);
@@ -12,3 +14,5 @@ class product(models.Model):
 
     def __str__(self):
         return self.product_name
+    
+    
