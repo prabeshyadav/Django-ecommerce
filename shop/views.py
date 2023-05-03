@@ -1,11 +1,15 @@
 from django.shortcuts import render
-from .models import product
+from .models import Product
 
 from django.http import HttpResponse
 from math import ceil
+from .serializers import ProductSerializer
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework import viewsets
 
 # Create your views here.
-
+from rest_framework.renderers import JSONRenderer
 
 def index(request):
 # products =product.objects.all()
@@ -21,10 +25,10 @@ def index(request):
     #nSlides= n//4 + ceil((n/4)-(n//4))
     #allProds=[[products, range(1, len(products)), nSlides],[products, range(1, len(products)), nSlides]]
     allprods=[]
-    cataprods=product.objects.values('category','id')
+    cataprods=Product.objects.values('category','id')
     cats ={item['category'] for item in cataprods}
     for cat in cats:
-        prod=product.objects.filter(category=cat)
+        prod=Product.objects.filter(category=cat)
         n=len(prod)
         nSlides=n//4 + ceil((n/4)-(n//4))
         allprods.append([prod,range(1,nSlides),nSlides])
@@ -56,3 +60,16 @@ def productview(request,myid):
 
 def checkout(request):
     return HttpResponse("we at checkOut")
+
+
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    
+    #  queryset = Account.objects.all()
+    # serializer_class = AccountSerializer
+    
+
+def product_detail(request):
+    prod=Product.objects.all()
+ 
